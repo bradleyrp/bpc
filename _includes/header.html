@@ -1,0 +1,23 @@
+<header class="site-header">
+  <div class="wrapper">
+    <div class="wrapper_header">
+      
+      <a class="site-title" href="/">
+      <img src="/images/bpc.png" style="padding-right:10px;height:2.0em;padding:10px 10px 10px 0px;">{{ site.title }}</a>
+      <nav class="site-nav">
+      <!--EXAMPLE HIGHLIT<a class="page-link" href="/index.html?r=123#research" style="font-weight:600;"
+      onClick="window.location.reload()">research</a>-->
+      {% assign sorted_pages = site.pages | sort:"order" %}
+      {% for my_page in sorted_pages %}
+        {% if my_page.hide_main_links != true%}
+          {% if my_page.short_title %}
+          <a class="page-link" href="{{ my_page.url | prepend: site.baseurl }}">{{ my_page.short_title }}</a>
+          {% elsif my_page.title %}
+          <a class="page-link" href="{{ my_page.url | prepend: site.baseurl }}">{{ my_page.title }}</a>
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+      </nav>
+    </nav>
+  </div>
+</header>
