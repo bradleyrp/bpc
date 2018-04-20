@@ -7,12 +7,12 @@
 
 # Site settings
 title: BioPhysCode
-email: biophyscode@gmail.com
+#email: biophyscode@gmail.com
 description: >
   Web portal for the biophyscode project.
 #---baseurl is the subpath of your site, e.g. /blog
 baseurl: "/"
-github_username:  biophyscode
+github_username:  bradleyrp
 highlighter: rouge
 
 #---build settings
