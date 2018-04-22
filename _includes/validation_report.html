@@ -36,9 +36,9 @@
 {% endif %}
 
 {% if report.manual %}
-<strong>Instructions:</strong> {{ report.manual | remove: '<p>' | remove: '</p>' }}
+<strong>Instructions:</strong> {{ report.manual | replace: 'BASE_URL', site.baseurl | markdownify | remove: '<p>' | remove: '</p>' }}
 {% endif %}
 
 {% if report.guide %}
-<strong>Unit test:</strong> {{ report.guide | markdownify | remove: '<p>' | remove: '</p>' }}
+<strong>Unit test:</strong> {{ report.guide | replace: 'BASE_URL', site.baseurl | markdownify | remove: '<p>' | remove: '</p>' }}
 {% endif %}

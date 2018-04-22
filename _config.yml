@@ -11,7 +11,6 @@ title: BioPhysCode
 description: >
   Web portal for the biophyscode project.
 #---baseurl is the subpath of your site, e.g. /blog
-url: "localhost:4000"
 baseurl: "/bpc"
 github_username:  bradleyrp
 highlighter: rouge

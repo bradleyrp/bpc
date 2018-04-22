@@ -7,7 +7,7 @@ permalink: /molecular_dynamics_lab/
 order: 4
 ---
 
-> This page describes an introductory lab exercise in which you will simulate and analyze a molecular dynamics simulation of a protein. This exercise follows the principles outlined in the [pipeline tutorial](/#pipeline), however students will need an instructor to set up a server for them. Students should receive a web address to begin.
+> This page describes an introductory lab exercise in which you will simulate and analyze a molecular dynamics simulation of a protein. This exercise follows the principles outlined in the [pipeline tutorial]({{site.baseurl}}/#pipeline), however students will need an instructor to set up a server for them. Students should receive a web address to begin.
 
 # Outline
 
@@ -36,7 +36,7 @@ Students have been given a web address to their own copy of the factory codes. W
 
 &#9654; Navigate to the factory website. The address will follow the pattern `hostname.server.com:8000` where the number is the port. You will be asked for a username and password. The factory pages will often link to a [Jupyter notebook server]() located on a different port.
 
-{% include figure.html src="../images/lab-molecular-dynamics/s01-simulator.png" %}
+{% include figure.html src="images/lab-molecular-dynamics/s01-simulator.png" %}
 
 The factory has a "simulator" and "calculator" page, which you can access from icons on the navigation tile in the upper left. The navigation tile also contains a link to the "interactive notebooks" which will take you to the notebook server. This exercise is designed so that we can swiftly get our simulation data into a [Jupyter/IPython notebook](https://jupyter.org/) where it will be easy to analyze using standard tools.
 
@@ -44,7 +44,7 @@ You will find a simulation named `villin-rp01` on the simulations list. In this 
 
 &#9654; Click the "calculator" button in the navigator tile to switch to the calculator page.
 
-{% include figure.html src="../images/lab-molecular-dynamics/s02-calculator.png" %}
+{% include figure.html src="images/lab-molecular-dynamics/s02-calculator.png" %}
 
 ## 1.1 Prepare metadata {#prep_metadata}
 
@@ -54,11 +54,11 @@ The factory will automatically generate metadata for the most common calculation
 
 &#9654; Click the button titled `regenerate "meta.current.yaml"` which can be found on the "meta files" tile. This will cause the link `meta.current.yaml` to appear on the list below. 
 
-{% include figure.html src="../images/lab-molecular-dynamics/s03-calculator-current.png" %}
+{% include figure.html src="images/lab-molecular-dynamics/s03-calculator-current.png" %}
 
 &#9654; Click the link and it will open the file in an editor in another browser tab.
 
-{% include figure.html src="../images/lab-molecular-dynamics/s04-edit-current.png" %}
+{% include figure.html src="images/lab-molecular-dynamics/s04-edit-current.png" %}
 
 This file is written in the [YAML format](http://www.yaml.org/start.html) which means that it is neatly organized by indents (some entries use braces to achieve the same effect). It includes three sections. The `calculations` section points to code that will analyze the simulation, the `collections` section has groups of simulations which can be analyzed together, and the `slices` section requests a slice of the simulation trajectory.
 
@@ -100,7 +100,7 @@ Each item in a YAML file is either a [dictionary or a list](https://docs.ansible
 
 &#9654; Click the name `meta.current.yaml` at the top of the editor and change it to `meta.protein_rmsd.all.yaml` to rename the file. When you have made these changes, your file should look like the one below.
 
-{% include figure.html src="../images/lab-molecular-dynamics/s04-edit-current.png" %}
+{% include figure.html src="images/lab-molecular-dynamics/s04-edit-current.png" %}
 
 Make sure you save the file with `ctrl + s` or the file menu. Note that you must click the text before using keyboard shortcuts otherwise the browser gets confused and will try to save the webpage instead.
 
@@ -110,23 +110,23 @@ Now that we have prepared the correct metadata, we will compute the RMSD and rec
 
 &#9654; Return to the calculator page and click the toggle button named `meta.protein_rmsd.all.yaml` found underneath the `compute!` button. This selects the metadata you just created. Then click the `compute!` button. The console will appear with some text.
 
-{% include figure.html src="../images/lab-molecular-dynamics/s05-compute.png" %}
+{% include figure.html src="images/lab-molecular-dynamics/s05-compute.png" %}
 
 The compute button has (1) created a slice on disk and (2) calculated the protein RMSD of this data. Let's view the calculation code.
 
 &#9654; Toggle the `meta.protein_rmsd.all.yaml` again and click the `refresh!` button. This will reveal the calculations tile so you can click the link to the `protein_rmsd` code shown in the image above. The code will be displayed on a separate web page.
 
-{% include figure.html src="../images/lab-molecular-dynamics/s06-rmsd-code.png" %}
+{% include figure.html src="images/lab-molecular-dynamics/s06-rmsd-code.png" %}
 
 This code receives the simulation trajectory path, reads it with MDAnalysis, aligns the protein, and then saves the timeseries for the RMSD relative to the first frame. Later we will perform this analysis ourselves, in a Python notebook. For now, we will visualize the results of this calculation in a separate notebook dedicated to ploting the result.
 
 &#9654; Return to the calculator page, which might be open in another tab. Click the `plot-protein_rmsd.py` link in the `plots` tile. This will take you to a page with the visualization code.
 
-{% include figure.html src="../images/lab-molecular-dynamics/s07-rmsd-plot.png" %}
+{% include figure.html src="images/lab-molecular-dynamics/s07-rmsd-plot.png" %}
 
 &#9654; Click the link "export this code to an IPython notebook" to make an interactive notebook. A button will appear when the page refreshes. Click the button to open the notebook.
 
-{% include figure.html src="../images/lab-molecular-dynamics/s08-rmsd-plot-interactive-button.png" %}
+{% include figure.html src="images/lab-molecular-dynamics/s08-rmsd-plot-interactive-button.png" %}
 
 The visualization code has been automatically added to an interactive [Jupyter notebook](https://jupyter.org/) so we can analyze and plot the results. The notebook is composed of cells which you can select (which creates a green border) and execute by typing `shift + enter`. 
 
@@ -134,7 +134,7 @@ The visualization code has been automatically added to an interactive [Jupyter n
 
 &#9654; If your code does not plot a legend, add `ax.legend()` directly above the comment that says "save the figure". If you have multiple simulations, this will help to distinguish the data for multiple simulations if you run more than one.
 
-{% include figure.html src="../images/lab-molecular-dynamics/s09-plot-rmsd.png" %}
+{% include figure.html src="images/lab-molecular-dynamics/s09-plot-rmsd.png" %}
 
 The Jupyter notebook resembles MatLab and Mathematica and has a [wide body of documentation](https://nbviewer.jupyter.org/github/jupyter/notebook/blob/master/docs/source/examples/Notebook/Notebook%20Basics.ipynb) if you want to learn more. You can make new cells by typing "`b`" for below or "`a`" for above when you have selected a cell. You can also type the names of variables to view them in an output cell. The tag on the left of each cell will change from `In [ ]` to `In [1]` when it is finished. An asterisk tells you that the code is still running. Later we will develop our analysis in this environment, but the protein RMSD plot above should be automatic.
 
@@ -144,15 +144,15 @@ Now that we have completed one piece of the analysis, we can download the trajec
 
 &#9654; Click on the "interactive notebooks" link next to the calculator icon on the upper left tile in the factory. This link is the best way to get to the notebook server.
 
-{% include figure.html src="../images/lab-molecular-dynamics/s10-interactive-notebooks-link.png" %}
+{% include figure.html src="images/lab-molecular-dynamics/s10-interactive-notebooks-link.png" %}
 
 &#9654; Click the folder icon to the left of `calc / project_a1 / calcs` to navigate to the root directory. Note that your project name may be different.
 
-{% include figure.html src="../images/lab-molecular-dynamics/s11-notebook-server.png" %}
+{% include figure.html src="images/lab-molecular-dynamics/s11-notebook-server.png" %}
 
 &#9654; Using the folder links, navigate from the root directory to `data/project_a1/post` but be sure to use the project name associated with your group e.g. `protein_b3`. This will provide a listing of the trajectory files. 
 
-{% include figure.html src="../images/lab-molecular-dynamics/s12-trajectory-files.png" %}
+{% include figure.html src="images/lab-molecular-dynamics/s12-trajectory-files.png" %}
 
 &#9654; Click the check box next to the file called `villin-rp01.0-200-2.all.pbcmol.gro` (see the image above) and click the download button on the bar above it. Save the file to your home directory. Repeat this with the XTC file called `villin-rp01.0-200-2.all.pbcmol.gro`. Note that you cannot download two files at once, so you have to uncheck the first file to download the second.
 
@@ -164,13 +164,13 @@ In the previous sections you have analyzed preexisting simulation data. In this 
 
 &#9654; Navigate to the "simulator" page on the factory using the icon in the upper left tile.
 
-{% include figure.html src="../images/lab-molecular-dynamics/s01-simulator.png" %}
+{% include figure.html src="images/lab-molecular-dynamics/s01-simulator.png" %}
 
 For this example, we will simulate one of the smallest, fastest-folding protein domains called the [villin headpiece](https://en.wikipedia.org/wiki/Villin). In a subsequent exercise, we will also show you how to use custom targets, but for now we will draw on PDB to supply the starting structure for the simulation. We will name the simulation `villin-rp02` since the simulation we analyzed in the previous section was the first replicate, `villin-rp01`. It is always a good idea to keep track of these names in a lab notebook.
 
 &#9654; Type the name `villin-rp02` in the text box in the "build simulation" tile.
 
-{% include figure.html src="../images/lab-molecular-dynamics/s18-build.png" %}
+{% include figure.html src="images/lab-molecular-dynamics/s18-build.png" %}
 
 The factory interface runs terminal commands in the background to generate the simulation on disk. For the remainder of the tutorial we will explain which commands it is running so that you know how these text-based tools work. You won't need to run the commands yourself, unless you wish to reproduce the simulation at the linux terminal. Building the simulation is equivalent to the following command, which creates a new folder with the name of your simulation. 
 
@@ -182,7 +182,7 @@ git clone http://github.com/biophyscode/automacs villin-rp02
 
 The next page asks you to choose a "kickstarter" which adds codes to your simulation. 
 
-{% include figure.html src="../images/lab-molecular-dynamics/s19-kickstarter.png" %}
+{% include figure.html src="images/lab-molecular-dynamics/s19-kickstarter.png" %}
 
 &#9654; Select the `proteins` kickstarter. 
 
@@ -195,21 +195,21 @@ make setup proteins
 
 &#9654; On the web interface, the next page supplies a list of simulation "experiments". Choose the `protein` experiment. Selecting this experiment is equivalent to the `make prep protein` terminal command.
 
-{% include figure.html src="../images/lab-molecular-dynamics/s20-experiment.png" %}
+{% include figure.html src="images/lab-molecular-dynamics/s20-experiment.png" %}
 
 The next page has a set of options for running this experiment. 
 
-{% include figure.html src="../images/lab-molecular-dynamics/s21-settings.png" %}
+{% include figure.html src="images/lab-molecular-dynamics/s21-settings.png" %}
 
 At this point, you could simply choose a protein databank structure by a four-character code, add it to the `pdb source` field, and run the simulation with the start button. However, for this exercise, we will take a closer look at the simulation by clicking the `manual` button, which generates an interactive notebook on a separate page.
 
 &#9654; Click the manual button. The next page has an `interactive script` button. 
 
-{% include figure.html src="../images/lab-molecular-dynamics/s22-interactive-script.png" %}
+{% include figure.html src="images/lab-molecular-dynamics/s22-interactive-script.png" %}
 
 &#9654; Click the `interactive script` button to open the simulation notebook.
 
-{% include figure.html src="../images/lab-molecular-dynamics/s23-simulation-notebook.png" %}
+{% include figure.html src="images/lab-molecular-dynamics/s23-simulation-notebook.png" %}
 
 The simulation notebook begins with a "settings" block which is mostly text. You can change various features of the simulation here, including the chemistry of the counterions (`cation` and `anion`), the size of the simulation box (`water buffer`), and most importantly, the identity of the starting structure (`pdb source`). 
 
@@ -233,7 +233,7 @@ Once you have selected the `1yrf` starting structure and executed the first cell
 
 While the simulation is running, it will print a log underneath.
 
-{% include figure.html src="../images/lab-molecular-dynamics/s24-notebook-run.png" %}
+{% include figure.html src="images/lab-molecular-dynamics/s24-notebook-run.png" %}
 
 **Running a simulation remotely.** Users who wish to leave the browser while their simulation runs are welcome to do so. First, save the notebook (via `ctrl+s`) and then close the tab in your browser. Jupyter will ask if you are sure that you want to leave the browser. You are free to leave the page. If you return in Firefox, an hourglass icon will indicate whether or not your simulation is still running. Other browsers lack this feature, but you can always check your simulation using the terminal according to the instructions in the next section.
 
@@ -247,17 +247,17 @@ While the simulation runs, you have the option to log in to the workstation to v
 
 After you supply a password you will see a linux shell or terminal. You can run `ls` to see the current folders, which should include `host`. Use the [`cd`](https://www-uxsup.csx.cam.ac.uk/pub/doc/suse/suse9.0/userguide-9.0/ch24s04.html) command to change directories to your simulation folder via `cd host/factory/data/project_a1/sims/villin-rp02` (replace the name `project_a1` or the simulation name `villin-rp02` if you have a different project or simulation name). Then run `tail s01-protein/s01-protein.log` to monitor the simulation progress.
 
-{% include figure.html src="../images/lab-molecular-dynamics/s25-terminal.png" %}
+{% include figure.html src="images/lab-molecular-dynamics/s25-terminal.png" %}
 
 The log file tells you what the code is doing. Most of the items in this file start with [gmx_run](https://biophyscode.github.io/automacs/base.html#calls.gmx_run) which is a Python function that runs a command at the terminal. One of the arguments to this function tells you the text of the command. For example, the final command is `gmx mdrun -nt 2 -nb cpu ...`, indicating that the program is running the [mdrun](http://manual.gromacs.org/programs/gmx-mdrun.html) binary to run the simulation. This line also specifies a log file, which you can view by running `tail s01-protein/log-mdrun-0001`. When the simulation is complete, you can see a benchmark which tells us how many nanoseconds have elapsed.
 
-{% include figure.html src="../images/lab-molecular-dynamics/s26-terminal-log.png" %}
+{% include figure.html src="images/lab-molecular-dynamics/s26-terminal-log.png" %}
 
 The simulation should only take a few minutes to complete. We recommend that you keep the simulation notebook open until it prints `complete!` to the output cell. The replicate that we have made in this exercise, called `villin-rp02` can be analyzed in the same way we analyzed the first replicate, `villin-rp01` in the beginning.
 
 **Checking up on a simulation.** Users who start a simulation in a Jupyter notebook can check that their simulation is still running by navigating to the correct folder, for example `host/factory/data/project_b1/sims/villin-rp01/`. If you run `make watch` it will show you the last relevant log file. If it says that it has written the final coordinates, then your simulation is complete. Use `ctrl+c` to exit the `make watch` command.
 
-{% include figure.html src="../images/lab-molecular-dynamics/s27-make-watch.png" %}
+{% include figure.html src="images/lab-molecular-dynamics/s27-make-watch.png" %}
 
 **Continuing a simulation.** This step is optional. If you want to extend your simulation, change directories to the main (only) step by running `cd s01-protein`. Then, run `./script-continue.sh` for a while. Use `ctrl+c` once it has run for a while to cancel it. Please do not let your simulation run indefinitely. It will run for 24 hours if you leave it unattended. Using this script will add more time to your trajectory. In a typical research project, we would send the simulation to a high-performance platform to accrue more time.
 
@@ -267,7 +267,7 @@ So far, you have learned how to use the automatic `protein_rmsd` code to copute 
 
 &#9654; Go to the calculator page and click the "interactive notebooks" link. You should see a notebook called `hydrogen_bond_analysis.ipynb` in the list of files.
 
-{% include figure.html src="../images/lab-molecular-dynamics/s53-hbonds-result.png" %}
+{% include figure.html src="images/lab-molecular-dynamics/s53-hbonds-result.png" %}
 
 This script uses [MDAnalysis](https://www.mdanalysis.org/) to read in each simulation trajectory, searches for hydrogen bond donors and acceptors, and then uses a [K-D Tree](https://en.wikipedia.org/wiki/K-d_tree) to find pairs which are close to each other. Once it does, it filters these by configurations that have a high (i.e. nearly straight) angle. We expect these bonds to be strong, and hence relevant to the dynamics of the protein's shape.
 
@@ -275,13 +275,13 @@ This script uses [MDAnalysis](https://www.mdanalysis.org/) to read in each simul
 
 The notebook should provide hydrogen bond counts for each simulation that you previously included in the [automatic protein RMSD calculation](#compute_rmsd).
 
-{% include figure.html src="../images/lab-molecular-dynamics/s52-hbonds-prep.png" %}
+{% include figure.html src="images/lab-molecular-dynamics/s52-hbonds-prep.png" %}
 
 Anytime you wish to add more simulations to this analysis, you must [prepare new metadata](#prep_metadata) and run the protein RMSD analysis. Only then will you generate the slices needed for other analysis. This is described [in more detail below](#more_simulations).
 
 The hydrogen bonding script also contains a function which writes the hydrogen bonds to a text file in the `post` folder for your project (this is the same location where the slices are written, described in the instructions for [downloading the trajectory](#download_trajectory)). One text file is written for each simulation. The results for each frame are separated by blank lines. Each line contains the residue name and number for the donor and acceptor, with the name of the hydrogen in the middle. For example `K6 NZ HZ2 E3 OE1` is the hydrogen bond from the `NZ` nitrogen and the `HZ2` hydrogen on lysine `K6` to the `OE1` oxygen of glutamic acid `E3` (we use one-letter amino acid codes).
 
-{% include figure.html src="../images/lab-molecular-dynamics/s54-hbonds-bond-list.png" %}
+{% include figure.html src="images/lab-molecular-dynamics/s54-hbonds-bond-list.png" %}
 
 # 4 Principal components analysis {#pca}
 
@@ -299,7 +299,7 @@ To compute the principal components, we will use a set of GROMACS tools which ar
 
 &#9654; We will begein by changing to our project's data directory. Use the code in the following image to check your "present working directory" and then change to the equivalent data directory. **Make sure that you select the right project folder.** It will not be `project_b7` as shown below, but it might be similar. You should also be careful to choose the right path. Some machines host your data with a different username than the one pictured below (`ryb`).
 
-{% include figure.html src="../images/lab-molecular-dynamics/s42-prep-pca-paths.png" %}
+{% include figure.html src="images/lab-molecular-dynamics/s42-prep-pca-paths.png" %}
 
 &#9654; Continuing to follow the image above, use `ls` to list the files in your project data folder and then make a new folder called `pca_analysis` using the `mkdir` command. Once you have completed the sequence above, you will have a folder to run our analysis. Change to the `pca_analysis` directory using the `cd` command after you make it.
 
@@ -317,7 +317,7 @@ xtc = source+'md.protein.xtc'
 tpr = source+'md.part0001.tpr'
 {% endhighlight %}
 
-{% include figure.html src="../images/lab-molecular-dynamics/s43-prep-pca-source.png" %}
+{% include figure.html src="images/lab-molecular-dynamics/s43-prep-pca-source.png" %}
 
 ### 4.2.1 Run PCA on a new simulation
 
@@ -364,7 +364,7 @@ The Jupyter notebook allows you to access python variables in a bash command by 
 
 Note that the "pipe operator" (`|`) sends the preceding echo command to the `gmx make_ndx` program. This is equivalent to entering `keep 3` followed by the return key, which is represented with a newline (`\n`) in the terminal. This takes the place of an interaction with the terminal program and allows us to run the code in the notebook.
 
-{% include figure.html src="../images/lab-molecular-dynamics/s44-prep-pca-index.png" %}
+{% include figure.html src="images/lab-molecular-dynamics/s44-prep-pca-index.png" %}
 
 &#9654; Next we will use the [covar](http://manual.gromacs.org/programs/gmx-covar.html) utility to generate the covariance matrix.
 
@@ -372,7 +372,7 @@ Note that the "pipe operator" (`|`) sends the preceding echo command to the `gmx
 ! gmx covar -f {xtc} -s {gro} -n protein.ndx
 {% endhighlight %}
 
-{% include figure.html src="../images/lab-molecular-dynamics/s45-prep-pca-covar.png" %}
+{% include figure.html src="images/lab-molecular-dynamics/s45-prep-pca-covar.png" %}
 
 Our molecular dynamics simulation has produced a series of snapshots of the motion of an object with 3N-6 degrees of freedom. The covariance calculation effectively "compresses" this motion into a ranked list of orthogonal motions stored in `eigenvec.trr`. The eigenvectors with the largest eigenvalues correspond to the largest displacements, and the slowest fluctuations of the protein's shape.
 
@@ -384,7 +384,7 @@ Our molecular dynamics simulation has produced a series of snapshots of the moti
 </code>
 </pre>
 
-{% include figure.html src="../images/lab-molecular-dynamics/s46-prep-pca-anaeig.png" %}
+{% include figure.html src="images/lab-molecular-dynamics/s46-prep-pca-anaeig.png" %}
 
 ## 4.4 Plotting the spectrum
 
@@ -416,7 +416,7 @@ plt.ylabel('eigenvalue')
 plt.yscale('log')
 {% endhighlight %}
 
-{% include figure.html src="../images/lab-molecular-dynamics/s47-prep-pca-spectrum.png" %}
+{% include figure.html src="images/lab-molecular-dynamics/s47-prep-pca-spectrum.png" %}
 
 The spectrum tells us the magnitudes of the motion correspnding to each eigenvector. Next we will view the motion of the deviations along the top five eigenvectors.
 
@@ -432,15 +432,15 @@ We can view the motion from each mode by using VMD. First, we will project the m
 </code>
 </pre>
 
-{% include figure.html src="../images/lab-molecular-dynamics/s49-prep-pca-extrema.png" %}
+{% include figure.html src="images/lab-molecular-dynamics/s49-prep-pca-extrema.png" %}
 
 &#9654; Return to the calculator page, and use the "interactive notebooks" link to open the Jupyter server. Use the folder button (in the toolbar, to the left of your current path) to navigate to the root directory, and then navigate to the data directory, which should be located in subfolders `data`, your project folder e.g. `project_XX`, then `data` and `pca_analysis`.
 
-{% include figure.html src="../images/lab-molecular-dynamics/s50-prep-pca-files.png" %}
+{% include figure.html src="images/lab-molecular-dynamics/s50-prep-pca-files.png" %}
 
 &#9654; Download `extreme1.pdb` (select the checkbox and use the download button) and open it in VMD. In the graphical representations window, change the drawing style to "points" and make them bigger. Then go to the trajectory tab, and draw multiple frames by entering `1:50`, which will show all of the frames at once. Finally, go back to the "draw style" tab and color by the trajectory timestep. You can also inspect the other modes by downloading `extreme2.pdb` and `extreme3.pdb`. 
 
-{% include figure.html src="../images/lab-molecular-dynamics/s51-prep-pca-vmd.png" %}
+{% include figure.html src="images/lab-molecular-dynamics/s51-prep-pca-vmd.png" %}
 
 This visualization shows the motion of the largest eigenvector projected onto the average structure of the protein. The areas where the color changes the most, over the largest distance, emphasize the parts of the protein which fluctuate or "breathe" the most.
 
@@ -475,7 +475,7 @@ for pnum in range(5):
     ax.set_ylabel('vector %d'%(pnum+1))
 {% endhighlight %}
 
-{% include figure.html src="../images/lab-molecular-dynamics/s48-prep-pca-projections.png" %}
+{% include figure.html src="images/lab-molecular-dynamics/s48-prep-pca-projections.png" %}
 
 This command projects the motion of the protein along each of the top five eigenvectors and measures their deviations from the average structure in nanometers.
 
@@ -491,7 +491,7 @@ At this point you have used the factory interface to create a slice or sample of
 
 &#9654; From the calculator page, which may be open in a previous browser tab, click the `interactive notebooks` link in the upper left tile. On the notebook server page, click the `New` button and make a `Python 2` notebook. Click the title of the notebook to rename it `protein_rmsd_analysis.ipynb`.
 
-{% include figure.html src="../images/lab-molecular-dynamics/s13-new-notebook.png" %}
+{% include figure.html src="images/lab-molecular-dynamics/s13-new-notebook.png" %}
 
 Now we will walk through the steps required to analyze the data. First we will import a few useful functions from the factory. 
 
@@ -530,7 +530,7 @@ paths = dict([(sn,
 
 The three cells above were specific to the factory, but they have provided us with the paths to our simulation "slices". You can view these paths by typing `paths['villin-rp01']` in a new cell which you can create with the "`a`" or "`b`" key to make the cell above or below the selected cell. The cell must be outlined blue instead of green for this to work. You can hit escape to change the cell outline to blue. Note that you should use your simulation name here, if it is different than the example.
 
-{% include figure.html src="../images/lab-molecular-dynamics/s14-rmsd-p1.png" %}
+{% include figure.html src="images/lab-molecular-dynamics/s14-rmsd-p1.png" %}
 
 At this point we have only retrieved the paths from the factory. In the next few cells we will read the trajectory using [MDAnalysis](https://www.mdanalysis.org/), align the protein structure, and compute the RMSD directly.
 
@@ -572,7 +572,7 @@ for fr in range(nframes):
 
 You can inspect the coordinates by typing `coords` into a new cell.
 
-{% include figure.html src="../images/lab-molecular-dynamics/s15-rmsd-p2.png" %}
+{% include figure.html src="images/lab-molecular-dynamics/s15-rmsd-p2.png" %}
 
 &#9654; Next we will use the following code to align the protein and compute the RMSD. The result is stored in a new variable called `rmsds`. 
 
@@ -597,7 +597,7 @@ for fr in range(nframes):
 
 &#9654; Execute this cell and inspect the `rmsds` variable in a new cell.
 
-{% include figure.html src="../images/lab-molecular-dynamics/s16-rmsd-p3.png" %}
+{% include figure.html src="images/lab-molecular-dynamics/s16-rmsd-p3.png" %}
 
 &#9654; To view the data we will import the [MatPlotLib](https://matplotlib.org/) software with the following code, in a new cell.
 
@@ -623,7 +623,7 @@ plt.ylabel('RMSD ($\AA$)')
 
 The result will be plotted directly in the notebook. This plot will be identical to the one we generated automatically in the previous section.
 
-{% include figure.html src="../images/lab-molecular-dynamics/s17-rmsd-p4.png" %}
+{% include figure.html src="images/lab-molecular-dynamics/s17-rmsd-p4.png" %}
 
 In this section we used a few blocks of code to get the paths to our simulations from the factory. After that, we used only standard tools, namely MDAnalysis, numpy, and MatPlotLib to align our protein backbone positions and reproduce the RMSD calculation. This workflow serves as a basis for any other calculations you may wish to perform. Next, we will use a similar method to analyze the hydrogen bonds in our simulation.
 
@@ -645,7 +645,7 @@ Users frequently add more simulations. To analyze them, we need to add them to o
 
 &#9654; Once you click the regenerate button, a new file with the familiar name `meta.current.yaml` will appear. Click the link to edit it and make sure that you click the title to rename it. You could use version numbers to indicate that this file is newer. In the example below I have renamed it `meta.protein_rmsd.all.v2.yaml`. 
 
-{% include figure.html src="../images/lab-molecular-dynamics/s28-regenerate-metadata.png" %}
+{% include figure.html src="images/lab-molecular-dynamics/s28-regenerate-metadata.png" %}
 
 The image above shows that the factory has automatically detected all of the simulations I have run so far, including `villin-rp01` and `villin-rp02`. Whenever new simulations are completed, you can regenerate metadata for them. Note that I have repeated the method we described in the [metadata preparation section](#prep_metadata) by changing all references to the `protein` selection to `all` so that the slices include all of the atoms and not just the protein.
 
@@ -653,7 +653,7 @@ The image above shows that the factory has automatically detected all of the sim
 
 &#9654; Select the toggle switch for your newly-created metadata, and click the `compute!` button to create slices for your new simulation and then run the protein RMSD calculation.
 
-{% include figure.html src="../images/lab-molecular-dynamics/s29-select-new-metadata.png" %}
+{% include figure.html src="images/lab-molecular-dynamics/s29-select-new-metadata.png" %}
 
 Whenver you want to add new simulations to your data, you should generate new metadata, toggle the file on the calculator page, and then run `compute!` with the large button. *Do not* select multiple meta files before computing. If you experience an error, you can always return to the calculator page (i.e. `http://some.host:PORT/calculator/`) and try again.
 
@@ -695,7 +695,7 @@ tpr_fn = work.source.get_last(sn,subtype='tpr')
 
 {% endhighlight %}
 
-{% include figure.html src="../images/lab-molecular-dynamics/s30-hbonds-p1.png" %}
+{% include figure.html src="images/lab-molecular-dynamics/s30-hbonds-p1.png" %}
 
 Next we will choose a single simulation to analyze. For this example I will use `sn = villin-rp01`. Note that I will use `sn` to refer to the "simulation name" for the remainder of this exercise. In a previous cell we generated a dictionary called `paths` which contains the structure and trajectory paths on the server. The previous cell computed the `tpr_fn`, the filename for the run input [`TPR`](http://manual.gromacs.org/documentation/5.1/user-guide/getting-started.html#run-input-file-tpr) file.
 
@@ -717,7 +717,7 @@ Note that MDAnalysis provides a very handy data structure. For example, we can l
 donors_candidates = [i for i in sel if i.name[0] in ['N','O','S'])]
 {% endhighlight %}
 
-{% include figure.html src="../images/lab-molecular-dynamics/s31-hbonds-p2.png" %}
+{% include figure.html src="images/lab-molecular-dynamics/s31-hbonds-p2.png" %}
 
 &#9654; Use the `bonded_atoms` attribute in the following cell to identify hydrogen atoms that are bound to the donors.
 
@@ -726,7 +726,7 @@ donors_pairs = [(i,j) for i in donors_candidates
                 for j in i.bonded_atoms if j.name[0]=='H']
 {% endhighlight %}
 
-{% include figure.html src="../images/lab-molecular-dynamics/s32-hbonds-p3.png" %}
+{% include figure.html src="images/lab-molecular-dynamics/s32-hbonds-p3.png" %}
 
 Note that Jupyter will display the last object in your cell (as long as you are not using the assignment operator `=` in that line). In the images above I have inspected some of the resulting items.
 
@@ -762,7 +762,7 @@ for fr in range(nframes):
     coords_acceptors[fr] = acceptors.positions
 {% endhighlight %}
 
-{% include figure.html src="../images/lab-molecular-dynamics/s33-hbonds-p4.png" %}
+{% include figure.html src="images/lab-molecular-dynamics/s33-hbonds-p4.png" %}
 
 &#9654; Use the following cell to import the [SciPy](https://www.scipy.org/) library (equivalent to MatLab) and define a few useful functions.
 
@@ -795,7 +795,7 @@ close,nns = tree.query(pts_fore,k=10,distance_upper_bound=cutoff_distance)
 
 The code above constructs the tree and returns a list of the nearest neighbors (`nns`) and their distances. We search for the ten nearest acceptors to each donor (`k=10`). Use of the `distance_upper_bound` means that distances above the cutoff are reported as infinity.
 
-{% include figure.html src="../images/lab-molecular-dynamics/s34-hbonds-p5.png" %}
+{% include figure.html src="images/lab-molecular-dynamics/s34-hbonds-p5.png" %}
 
 &#9654; Use the following syntax to extract the donors that acceptors that are within the cutoff distance.
 
@@ -826,7 +826,7 @@ i,j = angle_vecs[0]
 vecangle(i,j)
 {% endhighlight %}
 
-{% include figure.html src="../images/lab-molecular-dynamics/s35-hbonds-p6.png" %}
+{% include figure.html src="images/lab-molecular-dynamics/s35-hbonds-p6.png" %}
 
 &#9654; We can sum up the hydrogen bonds by looping over all of the angle vectors between atoms that are within the distance cutoff and saving only those that have an angle larger than the angle cutoff. These are the valid hydrogen bonds.
 
@@ -843,7 +843,7 @@ for ind,(i,j) in enumerate(angle_vecs):
 donors[hbonds[0][0]],donors_h[hbonds[0][0]],acceptors[hbonds[0][1]]
 {% endhighlight %}
 
-{% include figure.html src="../images/lab-molecular-dynamics/s36-hbonds-p7.png" %}
+{% include figure.html src="images/lab-molecular-dynamics/s36-hbonds-p7.png" %}
 
 While the specific bond list is important to us, we would also like to simply count the bonds in each frame of the simulation. 
 
@@ -886,7 +886,7 @@ this_bond = hbonds_obs[0][-1]
 donors[this_bond[0]],donors_h[this_bond[0]],acceptors[this_bond[1]]
 {% endhighlight %}
 
-{% include figure.html src="../images/lab-molecular-dynamics/s37-hbonds-p8.png" %}
+{% include figure.html src="images/lab-molecular-dynamics/s37-hbonds-p8.png" %}
 
 &#9654; Filter out bonds involving solvent using the following code.
 
@@ -916,6 +916,6 @@ plt.plot(bonds_per_frame,label=sn)
 plt.legend()
 {% endhighlight %}
 
-{% include figure.html src="../images/lab-molecular-dynamics/s38-hbonds-p9.png" %}
+{% include figure.html src="images/lab-molecular-dynamics/s38-hbonds-p9.png" %}
 
 Now that we have an observed bond list (`hbonds_obs`) we can isolate and view any hydrogen bonds in the system. You are also free to use other simulation names in the analysis above to compare one simulation to another.

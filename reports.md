@@ -10,7 +10,7 @@ order: 4
 
 {% assign latest = site.data.reports.last %}
 
-This page lists the unit tests, many of which are described on the **[validation page](/validation/)**, according to when they were last tested. Use the following links to jump to a specific report, which will explain what was tested on that date as well as the commit hashes and location on disk for the associated codes.
+This page lists the unit tests, many of which are described on the **[validation page]({{ site.baseurl}}/validation/)**, according to when they were last tested. Use the following links to jump to a specific report, which will explain what was tested on that date as well as the commit hashes and location on disk for the associated codes.
 
 <a class="bubble_light" href="#{{ latest.when }}">
 latest: {{ latest.when }}</a>
@@ -24,11 +24,11 @@ Whenever we test the code, we add it to the [list below](#reports_start). Each t
 2. The **automatic tests** are more general to the factory codes, and correspond to unit tests that can be completed directly from the command line without any other user intervention. 
 3. The **interface tests** require you to follow a guide and interact with the web interface.
 
-The full report will contain a listing of all repositories used for a particular test. It will often contain a separate testing factory which was used to run the tests according to the [Docker quickstart guide](/#docker). You can tell which factory was used for testing 
+The full report will contain a listing of all repositories used for a particular test. It will often contain a separate testing factory which was used to run the tests according to the [Docker quickstart guide]({{ site.baseurl}}/#docker). You can tell which factory was used for testing 
 
 ## Automacs tests {#automacs_tests}
 
-Testing is typically completed inside a separate copy of the factory. As we have explained in the [Docker quickstart guide](/#docker), most unit tests and associated docker files are written to the [factory-testset repository](https://github.com/bradleyrp/factory-testset). The following excerpt from one of its key files, [`testset.py`](https://github.com/bradleyrp/factory-testset/blob/master/testset.py), is responsible for running all of the automacs unit tests. It receives an `experiment`, `docker`, and `kickstarter` key from Python when it runs. These are each noted in the report for the unit test.
+Testing is typically completed inside a separate copy of the factory. As we have explained in the [Docker quickstart guide]({{ site.baseurl}}/#docker), most unit tests and associated docker files are written to the [factory-testset repository](https://github.com/bradleyrp/factory-testset). The following excerpt from one of its key files, [`testset.py`](https://github.com/bradleyrp/factory-testset/blob/master/testset.py), is responsible for running all of the automacs unit tests. It receives an `experiment`, `docker`, and `kickstarter` key from Python when it runs. These are each noted in the report for the unit test.
 
 {% highlight bash %}
 amx %(experiment)s:
@@ -68,7 +68,7 @@ make go protein clean
 
 {% endhighlight %}
 
-Knowing that an experiment has passed a unit test means it is likely that the above sequence will work for new users, however we must caution you that running such a [standalone automacs](/#automacs) experiment is best done after you source the environment [provided by the factory](/#factory).
+Knowing that an experiment has passed a unit test means it is likely that the above sequence will work for new users, however we must caution you that running such a [standalone automacs]({{ site.baseurl}}/#automacs) experiment is best done after you source the environment [provided by the factory]({{ site.baseurl}}/#factory).
 
 <h1 id="reports_start"><a name="reports_start"></a>Test Reports Listing</h1>
 {% for report in site.data.reports %}

@@ -10,7 +10,7 @@
     {% if tile.link %}<a href="{{ site.baseurl }}/{{ tile.link }}"><strong>{{ tile.title }}</strong></a>
     {% else %}<strong>{{ tile.title }}</strong>
     {% endif %}
-    {{ tile.caption }}
+    {{ tile.caption | replace: 'BASE_URL', site.baseurl }}
   </div>
 </div>
 {% endif %}

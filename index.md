@@ -8,24 +8,24 @@ tiles:
   - grouping_start: true
     shortname: codes
   - title: "<code><b>FACTORY</b></code>"
-    image: "/images/factory.png"
-    caption: <br>a flexible framework for building and analyzing molecular simulation data <br>&#9726; <a href="http://github.com/biophyscode/factory">source from github</a> <br>&#9726; <a href="/contact">contact the authors for instructions</a>
+    image: "images/factory.png"
+    caption: <br>a flexible framework for building and analyzing molecular simulation data <br>&#9726; <a href="http://github.com/biophyscode/factory">source from github</a> <br>&#9726; <a href="BASE_URL/contact">contact the authors for instructions</a>
     shortname: factory
     tile_type: large
   - title: <code><b>AUTOMACS</b></code>
-    image: "/images/automacs.png"
+    image: "images/automacs.png"
     caption: reproducible, extensible, shareable simulation protocols <br>&#9726; <a href="http://github.com/biophyscode/automacs">source from github</a> <br>&#9726; online <a href="http://biophyscode.github.io/automacs" target="_blank">documentation</a>
     shortname: automacs
     tile_type: large
   - title: <code><b>OMNICALC</b></code>
-    image: "/images/omnicalc.png"
+    image: "images/omnicalc.png"
     caption: <br>transparent analysis pipeline for interpreting biophysical simulations <br>&#9726; <a href="http://github.com/biophyscode/omnicalc">source from github</a> <br>&#9726; online <a href="http://biophyscode.github.io/omnicalc" target="_blank">documentation</a>
     shortname: omnicalc
     tile_type: large
   - grouping_end: true
 ---
 
-**`BioPhysCode`** is an umbrella term for three open-source biophysical simulation analysis tools written by [Ryan Bradley](http://scattershot.info) and [Joe Jordan](https://github.com/ejjordan) in order to share our methods. Our goal is to provide all of our simulation and analysis tools to the larger research community. Each code works independently, however they are designed as a single, coherent [framework](https://en.wikipedia.org/wiki/Software_framework) so you can use them together to create novel, scalable biophysics experiments based on the popular [GROMACS](http://www.gromacs.org) integrator. [Contact the authors](/contact) if you have questions, or open an issue on the github pages listed below.
+**`BioPhysCode`** is an umbrella term for three open-source biophysical simulation analysis tools written by [Ryan Bradley](http://scattershot.info) and [Joe Jordan](https://github.com/ejjordan) in order to share our methods. Our goal is to provide all of our simulation and analysis tools to the larger research community. Each code works independently, however they are designed as a single, coherent [framework](https://en.wikipedia.org/wiki/Software_framework) so you can use them together to create novel, scalable biophysics experiments based on the popular [GROMACS](http://www.gromacs.org) integrator. [Contact the authors]({{ site.baseurl}}/contact) if you have questions, or open an issue on the github pages listed below.
 
 We recommend starting with either the **[quickstart guide](#quickstart-guide)** or the list of **[validated codes](validation)**.
 
@@ -97,7 +97,7 @@ make prep v
 
 The final command lists all of the available simulation "experiments". The `make gromacs_config` command can write an automacs configuration file to either your home directory or in the automacs root folder. This configuration file will help you load the necessary software on the cluster, or set the number of processors for the integrator. The `v` flag uses a verbose mode that includes tags and test dates. The colorful tags show the last time the tests were run, and serve as notes for the developers. The `make prep v` command lists three types of "experiments". We've highlighted the multi-step experiments (called "metaruns") in the image below. 
 
-![A list of experiments. Tags indicate the scale, last test date, and other important details. The grey text tells you where automacs found the experiment.]({{ site.url }}/images/quickstart/make-prep.png)
+![A list of experiments. Tags indicate the scale, last test date, and other important details. The grey text tells you where automacs found the experiment.]({{ site.baseurl }}/images/quickstart/make-prep.png)
 
 The `make setup all` command tells automacs to download independent repositories containing different experiments. You can also make your own modular repositories and load them into automacs. The default modules are loaded by `make setup` which can request one of several "kickstarters" that pull down several modules from github. The `all` kickstart is a good place to start. The instructions to run these experiments are found in the grey paths listed beside them. Because automacs uses "kickstarters" to load extra modules from github, it automatically detects any file that matches `*_expts.py` and parses it for experiments, so your list of experiments might be different.
 
@@ -116,7 +116,7 @@ Most users prefer to start with one of the following examples.
 1. `protein` will simulate a small protein in a water box. This is available with a smaller kickstarter invoked via `make setup protein` after you clone automacs.
 2. `testset_protein_bilayer_flat` will create a coarse-grained bilayer and attach a small helix to it. This requires the `make setup all` kickstarter after cloning, and also requires SciPy, provided by the factory or available at your terminal.
 
-Both experiments obviously require a working copy of gromacs. Other [validated experiments](/validation) are listed at the end of this guide. Users who wish to run coarse-grained simulations should check out the detailed [coarse-grained bilayer guide](/walkthrough#cgmd_bilayers) for a more thorough walkthrough. The protein experiment also leads the [walkthrough](/walkthrough#protein) that helps to explain the experiment file, which includes all of the parameters necesssary to design the simulation.
+Both experiments obviously require a working copy of gromacs. Other [validated experiments]({{ site.baseurl}}/validation) are listed at the end of this guide. Users who wish to run coarse-grained simulations should check out the detailed [coarse-grained bilayer guide]({{ site.baseurl}}/walkthrough#cgmd_bilayers) for a more thorough walkthrough. The protein experiment also leads the [walkthrough]({{ site.baseurl}}/walkthrough#protein) that helps to explain the experiment file, which includes all of the parameters necesssary to design the simulation.
 
 # 3. Analyzing simulations {#calculation}
 
@@ -303,7 +303,7 @@ make plot protein_rmsd
 
 Omnicalc will deposit you in an interactive terminal in case you wish to inspect the data. Otherwise the following plot will be written to the `plot_spot` directory set in the connection file. 
 
-<p style="text-align: center;"><img src="{{ site.url }}/images/fig.protein_rmsd.v1.png" width="65%"></p>
+<p style="text-align: center;"><img src="{{ site.baseurl }}/images/fig.protein_rmsd.v1.png" width="65%"></p>
 
 *Note that this quickstart guide was tested and added to the [validation list](validation/#atomistic_protein). The calculations repository has been shared according to the directions below, and can be found on [github](https://github.com/biophyscode/omni-basic).*
 
@@ -313,7 +313,7 @@ At the beginning of the quickstart guide we made a connection file which set the
 
 <h1 id="pipeline"><a name="pipeline"></a>4. A web-based simulation-analysis pipeline</h1>
 
-Pipeline documentation is available on a [separate walkthrough](/walkthrough).
+Pipeline documentation is available on a [separate walkthrough]({{ site.baseurl}}/walkthrough).
 
 <h1 id="docker"><a name="docker"></a>5. Running the factory in Docker</h1>
 
@@ -356,7 +356,7 @@ Note that the arguments `factory test` are a sequence of descriptors that can be
 make test demo serve
 {% endhighlight %}
 
-<p style="text-align: center;"><img src="{{ site.url }}/images/make_test_demo_serve.png" width="65%"></p>
+<p style="text-align: center;"><img src="{{ site.baseurl }}/images/make_test_demo_serve.png" width="65%"></p>
 
-You can shut down the factory by running `docker kill` (see image above). The authors will provide more detailed documentation for the unit test syntax, however this guide has described the simplest way to test or deploy the factory. This quickstart guid is part of the [validation list](/validation#create_factory), and is necessary for running other unit tests. [Contact the authors](/contact) with questions!
+You can shut down the factory by running `docker kill` (see image above). The authors will provide more detailed documentation for the unit test syntax, however this guide has described the simplest way to test or deploy the factory. This quickstart guid is part of the [validation list]({{ site.baseurl}}/validation#create_factory), and is necessary for running other unit tests. [Contact the authors]({{ site.baseurl}}/contact) with questions!
 

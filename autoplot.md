@@ -113,7 +113,7 @@ if __name__=='__main__':
 
 {% endhighlight %}
 
-Then, add the following entry to your plots metadata. Ensure that you have a calculation called `undulations` by adding this to an existing demonstration. We recommend piggybacking this on the end of the [single pipeline walkthrough](/walkthrough).
+Then, add the following entry to your plots metadata. Ensure that you have a calculation called `undulations` by adding this to an existing demonstration. We recommend piggybacking this on the end of the [single pipeline walkthrough]({{site.baseurl}}/walkthrough).
 
 {% highlight YAML %}
 
@@ -130,7 +130,7 @@ Navigate to the omnicalc directory, typically at `factory/calc/project_name`. No
 
 Run `make go demo_autoplot`. The output is given in a screenshot below.
 
-{% include figure.html src="../images/autoplot/demo_autoplot.png" %}
+{% include figure.html src="images/autoplot/demo_autoplot.png" %}
 
 The instructions explain how the code is executed, but in short, this script runs the `load` function first, dumps all of its locals into globals, and then executes every function decorated with `@autoplot(plotrun)`. 
 
