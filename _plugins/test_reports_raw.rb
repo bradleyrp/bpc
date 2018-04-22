@@ -1,6 +1,7 @@
 Jekyll::Hooks.register :site, :after_init do |site|
-  # cannot use site.data because it is not ready at :after_init so we get it manually
-  # this means that we only run once on build and not continuously on `jekyll serve`
+  # write test reports which show the proof of work for a test, with commit hashes
+  #! cannot use site.data because it is not ready at :after_init so we get it manually
+  #! this means that we only run once on build and not continuously on `jekyll serve`
   require 'yaml'
   site_data_reports = YAML.load_file('_data/reports.yaml')
   for report in site_data_reports

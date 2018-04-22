@@ -27,8 +27,12 @@
 
 {% if report.testing_note %}
 <strong>Note:</strong> {{ report.testing_note }}
+{% elsif site.data.validations_times %}
+{% if site.data.validations_times[report.short] %}
+<a class="bubble_light" href="{{ site.baseurl }}/reports/#{{ site.data.validations_times[report.short] }}">tested {{ site.data.validations_times[report.short] }}</a>
 {% else %}
-{{ report.short | get_last_test: site.data.reports }}
+<span class="bubble_light">pending test</span>
+{% endif %}
 {% endif %}
 
 {% if report.manual %}

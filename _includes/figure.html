@@ -1,4 +1,4 @@
 <p style="text-align: center;">
-<img src="{{ my_page.url | prepend: site.baseurl }}/{{ include.src }}" 
+<img src="{{ site.baseurl }}/{{ include.src }}" 
 width="{% if include.width == '' %}100{% else %}{{ include.width }}{% endif %}%">
 </p>

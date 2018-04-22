@@ -1,8 +1,7 @@
 <div>
 <a name="{{ include.figure.key }}"></a>
 <div class="imager_tile">
-<img style="max-width:100%;padding:0px;border: 0px solid gray;" 
-src="{{ my_page.url | prepend: site.baseurl }}/{{ include.figure.image }}" border="0">
+<img style="max-width:100%;padding:0px;border: 0px solid gray;" src="{{ site.baseurl }}/{{ include.figure.image }}" border="0">
 <br>
 {% if include.figure.subcap %}
 <caption>{{ include.figure.subcap | markdownify }}</caption>{% endif %}

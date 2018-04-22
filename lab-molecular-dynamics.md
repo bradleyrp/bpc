@@ -11,10 +11,10 @@ order: 4
 
 # Outline
 
-- [Starting with the factory](#starting-point-the-factory)
+- [Starting with the factory](#start)
 - [1. Analyze a protein simulation](#analyze_protein)
 - [1.1 Prepare metadata](#prep_metadata)
-- [1.2 Compute the protein RMSD](#protein_rmsd)
+- [1.2 Compute the protein RMSD](#compute_rmsd)
 - [1.3 Download the trajectory](#download_trajectory)
 - [2. Simulating a new protein](#new_protein)
 - [2.1 Visit the simulation in the terminal](#terminal)
@@ -273,7 +273,7 @@ This script uses [MDAnalysis](https://www.mdanalysis.org/) to read in each simul
 
 &#9654; Execute each cell of the notebook by using `shift + enter`. If you encounter errors you may need to use the stop button at the top, or restart the kernel using the menus.
 
-The notebook should provide hydrogen bond counts for each simulation that you previously included in the [automatic protein RMSD calculation](#protein_rmsd). 
+The notebook should provide hydrogen bond counts for each simulation that you previously included in the [automatic protein RMSD calculation](#compute_rmsd).
 
 {% include figure.html src="../images/lab-molecular-dynamics/s52-hbonds-prep.png" %}
 
@@ -481,7 +481,7 @@ This command projects the motion of the protein along each of the top five eigen
 
 # Appendix: custom calculations {#appendix}
 
-The next two sections will show you how to construct new calculations inside the factory. The following examples will show you how to run calculations from earlier sections "by hand", that is, without using code written by anybody else. We first demonstrate the code for a "manual" [protein RMSD](#protein_rmsd_manual) calculation which you [completed earlier](#protein_rmsd) and then walk you through the [hydrogen bonding analysis](#hbonds_manual) which formed the basis for the [automatic code you used earlier](#hbonds) to accomplish the same result. Users who are interested in writing other analyses not covered in this tutorial should follow these examples carefully and then use the general method to write their own code.
+The next two sections will show you how to construct new calculations inside the factory. The following examples will show you how to run calculations from earlier sections "by hand", that is, without using code written by anybody else. We first demonstrate the code for a "manual" [protein RMSD](#protein_rmsd_manual) calculation which you [completed earlier](#compute_rmsd) and then walk you through the [hydrogen bonding analysis](#hbonds_manual) which formed the basis for the [automatic code you used earlier](#hbonds) to accomplish the same result. Users who are interested in writing other analyses not covered in this tutorial should follow these examples carefully and then use the general method to write their own code.
 
 Note that anytime you want to run a custom calculation, you *must compute the protein RMSD first* because [any new simulations](#more_simulations) must be processed with this code before we can get a copy of its trajectory.
 
@@ -631,7 +631,7 @@ In this section we used a few blocks of code to get the paths to our simulations
 
 In the previous sections we learned how to execute and analyze simulations inside the factory. In [the "download trajectory" section](#download_trajectory) we also showed you how to download a sampled trajectory or "slice" that was generated in the course of computing the protein RMSD for your simulation. Users have three options for analyzing their data. Note that both options 2 and 3 require that you do option 1 first, because they use a sample of your trajectory called a "slice" which is written to disk.
 
-1. Run a "stock" calculation in the factory (e.g. [protein RMSD](protein_rmsd)) which also generates a trajectory.
+1. Run a "stock" calculation in the factory (e.g. [protein RMSD](#compute_rmsd) which also generates a trajectory.
 2. Download the trajectory (from item 1) from a stock calculation and analyze it in another tool e.g. VMD.
 3. Use the trajectory (from item 1) to run a calculation "by hand" in a new Jupyter notebook (e.g. the "manual" [protein RMSD](#protein_rmsd_manual) calculation).
 
@@ -665,7 +665,7 @@ Users who made slices for all of their simulations in the previous section are w
 
 &#9654; Go to the calculator page and click the "interactive notebooks" link. On the notebook server page, make a new Python 2 notebook and rename it `hydrogen_bonding_analysis`.
 
-&#9654; We will start with the same sequence [as before](#protein_rmsd). Add the following code to a new cell (or cells) at the top of your notebook.
+&#9654; We will start with the same sequence [as before](#protein_rmsd_manual). Add the following code to a new cell (or cells) at the top of your notebook.
 
 {% highlight python %}
 

@@ -3,17 +3,17 @@ layout: page
 title: Walkthrough
 hide_title: true
 hide_main_links: true
-permalink: /walkthrough/
+permalink: /walkthrough
 order: 4
 ---
 
-# Simulation-analysis pipeleine
+# Simulation-analysis pipeline
 
-This walkthrough covers the use of the factory as a single pipeline for creating and analying simulations. To run the walkthrough, users must first create a factory and then create a new omnicalc project. There is both a [quickstart guide](/#factory) and [unit test](/validation/#create_factory) available for starting the factory. All paths in this guide are relative to the factory location. Next we will explain how to set up a new omnicalc project, and after that, we will run a simulation and analyze it inside the graphical user interface (GUI). Note that we have a legacy version of this walkthrough [here](walkthrough_protein).
+This walkthrough covers the use of the factory as a single pipeline for creating and analying simulations. To run the walkthrough, users must first create a factory and then create a new omnicalc project. There is both a [quickstart guide](/#factory) and [unit test](/validation/#create_factory) available for starting the factory. All paths in this guide are relative to the factory location. Next we will explain how to set up a new omnicalc project, and after that, we will run a simulation and analyze it inside the graphical user interface.
 
 ## Making a new omnicalc project
 
-This section outlines the method for creating a factory project and serving it locally. It mimics a [unit test](/validation/#demo_serve) which can be used to serve a factory over the web from inside a Docker. Note that this guide is similar to the [quickstart guide for calculations](/#calculation), except we will use the graphical user interface (GUI) to generate simulation data directly. In both cases, we must start by making a new omnicalc project. 
+This section outlines the method for creating a factory project and serving it locally. It mimics a [unit test](/validation/#demo_serve) which can be used to serve a factory over the web from inside a Docker. Note that this guide is similar to the [quickstart guide for calculations]({{ site.url }}/#calculation), except we will use the graphical user interface (GUI) to generate simulation data directly. In both cases, we must start by making a new omnicalc project. 
 
 An omnicalc project is described by a "connection" file which tells omnicalc where to store simulations, how to serve an instance of the factory, and where to store post-processing data and plots. Once you have [created a factory](/validation#create_factory), make a directory called `factory/connections` and prepare a connection file called `connect_demo.yaml` with the following contents.
 
@@ -71,7 +71,7 @@ spots:
 
 The project name is given at the top of the connection file: `demo` and will replace any instance of `PROJECT_NAME` in the text. The paths above are relative to `./factory/` but you can use absolute paths to store the plots (`plot_spot`) and post-processing data (`post_spot`) elsewhere. These paths can be changed later if you move your data, by rerunning the connect command below.
 
-The `sims` dictionary tells omnicalc where to find simulation data. It is currently set to the default value for using a single simulation-analysis pipeline, however you can also use this dictionary to import preexisting simulation data by following the [calculation guide](/#calculation). Each entry e.g. `sims` tells omnicalc where to look for data, while the regular expressions ("`regexes`") tell it how to interpret files on disk as trajectory files, structure files, etc.
+The `sims` dictionary tells omnicalc where to find simulation data. It is currently set to the default value for using a single simulation-analysis pipeline, however you can also use this dictionary to import preexisting simulation data by following the [calculation guide]({{ site.url }}/#calculation). Each entry e.g. `sims` tells omnicalc where to look for data, while the regular expressions ("`regexes`") tell it how to interpret files on disk as trajectory files, structure files, etc.
 
 Above the `spots` dictionary are entries for `port` and `notebook_port`. These are set to the default location for serving a *local* copy of the factory to e.g. `http://localhost:8000`. If this port is not available, choose one that is. If you wish to serve the factory over the internet, you will need to use root access to open the required ports, update the `public` dictionary with the right ports, and then add your IP address to the `hostname` list. We recommend doing this with a [unit test inside of docker](/validation#demo_serve) for security reasons.
 
@@ -95,9 +95,9 @@ In the following walkthrough we will be using codes which have been shared on gi
 
 The method above corresponds to the [`demo serve` unit test](/validation#demo_serve), while the remainder of the guide is meant to be performed on the web interface.
 
-## Running a simulation
+## Running a simulation {#protein}
 
-In this section, we will run and analyze a protein simulation. Once you have served the factory, open it in a browser. If you are running it locally on port 8000 then visit [http://localhost:8000](http://localhost:8000) otherwise select the same port you used above. You should see the following screen.
+In this section, we will run and analyze a protein simulation. Once you have served the factory, open it in a browser. If you are running it locally on port 8000 then visit `http://localhost:8000` otherwise select the same port you used above. You should see the following screen.
 
 {% include figure.html src="../images/walkthrough-protein/w01-simulator.png" %}
 
@@ -169,7 +169,7 @@ The console captures terminal output so it might appear somewhat confusing. The 
 
 ### Plotting the protein RMSD
 
-To plot our data, we will create a new plot script. Note that this is the same script that we used in the [calculation guide](/calculation). There should be a file in the "plots" tile called `plot-rmsd.py`. Clicking it will open the script in a separate tab for viewing.
+To plot our data, we will create a new plot script. Note that this is the same script that we used in the [calculation guide]({{site.url}}/#calculation). There should be a file in the "plots" tile called `plot-rmsd.py`. Clicking it will open the script in a separate tab for viewing.
 
 {% include figure.html src="../images/walkthrough-protein/w14-plot-rmsd-code.png" %}
 
@@ -191,7 +191,7 @@ If you return to the calculator page by using the button in the first tile, you 
 
 Remember that all of the paths are controlled by the connection file at the beginning of the guide, and hence you can save the data wherever you like by choosing these paths carefully. In the next section we will show you how to run coarse-grained simulations, but this guide has covered the basics of the workflow.
 
-<h2 id="cgmd_bilayers"><a name="cgmd_bilayers"></a>Running coarse-grained simulations</h2>
+## Running coarse-grained simulations {#cgmd_bilayers}
 
 In the second part of this review, we will run a coarse-grained simulation of a bilayer using the [MARTINI](http://cgmartini.nl/) force field. Since the procedure is very similar to the atomistic protein simulation, we will describe it with fewer images and more words.
 

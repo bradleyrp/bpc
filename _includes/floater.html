@@ -4,10 +4,10 @@
 </div><div style="clear:both;"></div>
 {% else %}
 <div class="floater_{{ tile.tile_type }}" style="margin-bottom:20px;">
-  <img src="{{ my_page.url | prepend: site.baseurl }}/{{include.tile.image}}" border="2">
+  <img src="{{ site.baseurl }}/{{include.tile.image}}" border="2">
   <div class="floater_inset_text">
     {% if tile.tag %}<text class="bubble">{{ tile.tag }}</text> {% endif %}
-    {% if tile.link %}<a href="{{ my_page.url | prepend: site.baseurl }}/{{ tile.link }}"><strong>{{ tile.title }}</strong></a>
+    {% if tile.link %}<a href="{{ site.baseurl }}/{{ tile.link }}"><strong>{{ tile.title }}</strong></a>
     {% else %}<strong>{{ tile.title }}</strong>
     {% endif %}
     {{ tile.caption }}
