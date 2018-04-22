@@ -99,7 +99,7 @@ make prep v
 
 The final command lists all of the available simulation "experiments". The `make gromacs_config` command can write an automacs configuration file to either your home directory or in the automacs root folder. This configuration file will help you load the necessary software on the cluster, or set the number of processors for the integrator. The `v` flag uses a verbose mode that includes tags and test dates. The colorful tags show the last time the tests were run, and serve as notes for the developers. The `make prep v` command lists three types of "experiments". We've highlighted the multi-step experiments (called "metaruns") in the image below. 
 
-![A list of experiments. Tags indicate the scale, last test date, and other important details. The grey text tells you where automacs found the experiment.](/images/quickstart/make-prep.png)
+![A list of experiments. Tags indicate the scale, last test date, and other important details. The grey text tells you where automacs found the experiment.]({{ my_page.url | prepend: site.baseurl }}/images/quickstart/make-prep.png)
 
 The `make setup all` command tells automacs to download independent repositories containing different experiments. You can also make your own modular repositories and load them into automacs. The default modules are loaded by `make setup` which can request one of several "kickstarters" that pull down several modules from github. The `all` kickstart is a good place to start. The instructions to run these experiments are found in the grey paths listed beside them. Because automacs uses "kickstarters" to load extra modules from github, it automatically detects any file that matches `*_expts.py` and parses it for experiments, so your list of experiments might be different.
 
@@ -305,7 +305,7 @@ make plot protein_rmsd
 
 Omnicalc will deposit you in an interactive terminal in case you wish to inspect the data. Otherwise the following plot will be written to the `plot_spot` directory set in the connection file. 
 
-<p style="text-align: center;"><img src="../images/fig.protein_rmsd.v1.png" width="65%"></p>
+<p style="text-align: center;"><img src="{{ my_page.url | prepend: site.baseurl }}/images/fig.protein_rmsd.v1.png" width="65%"></p>
 
 *Note that this quickstart guide was tested and added to the [validation list](validation/#atomistic_protein). The calculations repository has been shared according to the directions below, and can be found on [github](https://github.com/biophyscode/omni-basic).*
 
@@ -358,6 +358,6 @@ Note that the arguments `factory test` are a sequence of descriptors that can be
 make test demo serve
 {% endhighlight %}
 
-<p style="text-align: center;"><img src="../images/make_test_demo_serve.png" width="65%"></p>
+<p style="text-align: center;"><img src="{{ my_page.url | prepend: site.baseurl }}/images/make_test_demo_serve.png" width="65%"></p>
 
 You can shut down the factory by running `docker kill` (see image above). The authors will provide more detailed documentation for the unit test syntax, however this guide has described the simplest way to test or deploy the factory. This quickstart guid is part of the [validation list](/validation#create_factory), and is necessary for running other unit tests. [Contact the authors](/contact) with questions!

@@ -2,7 +2,7 @@
 {{ report.when }}
 </h2>
 
-<a class="bubble_light" href="/test_reports/{{ report.when }}.html" target="_blank">full report</a>
+<a class="bubble_light" href="{{ site.baseurl }}/test_reports/{{ report.when }}.html" target="_blank">full report</a>
 <span class="bubble_light" >completed {{ report.when | date: "%Y %b %d" | upcase }}</span>
 
 {% if report.note %}{{ report.note }}{% endif %} 
@@ -12,7 +12,7 @@
 <ol>
 {% for valid in report.validations.automatic %}
 {% assign lookup_validation = site.data.validations | where: "short", valid.tag  | first %}
-<li><a href="/validation/#{{ valid.tag }}">{{ lookup_validation.name | capitalize }}</a></li>
+<li><a href="{{ site.baseurl }}/validation/#{{ valid.tag }}">{{ lookup_validation.name | capitalize }}</a></li>
 {% endfor %}
 </ol>
 {% endif %}
@@ -22,7 +22,7 @@
 <ol>
 {% for valid in report.validations.interface %}
 {% assign lookup_validation = site.data.validations | where: "short", valid.tag  | first %}
-<li><a href="/validation/#{{ valid.tag }}">{{ lookup_validation.name | capitalize }}</a></li>
+<li><a href="{{ site.baseurl }}/validation/#{{ valid.tag }}">{{ lookup_validation.name | capitalize }}</a></li>
 {% endfor %}
 </ol>
 {% endif %}
